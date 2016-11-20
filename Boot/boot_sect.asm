@@ -30,13 +30,15 @@ load_kernel:
 	mov dh, 30
 	mov dl, [BOOT_DRIVE]
 	call disk_load
+	mov bx, MSG_CALLED_DISK_LOAD
+	call print_string
 	ret
 
 [bits 32]
 BEGIN_PM:
 	mov ebx, MSG_PROT_MODE
 	call print_string_pm
-
+	mov ebx, KERNEL_OFFSET
 	call KERNEL_OFFSET
 
 	jmp $
@@ -46,6 +48,9 @@ BOOT_DRIVE:
 
 MSG_REAL_MODE:
 	db " Started in 16- bit Real Mode ", 0
+
+MSG_CALLED_DISK_LOAD:
+	db " called disk load ", 0
 
 MSG_PROT_MODE:
 	db " Successfully landed in 32- bit Protected Mode ", 0

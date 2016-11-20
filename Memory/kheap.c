@@ -6,11 +6,8 @@ void *base = NULL;
 void kheap_SPEC()
 {
 	print("Start of kernel heap memory :: ");
-	print_hex(KHEAP_START);
 	print("\nEnd of kernel heap memory   :: ");
-	print_hex(KHEAP_END);
 	print("\ncurrent pointer to kernel heap memory :: ");
-	print_hex(cur_heap);
 	print("\n");
 }
 

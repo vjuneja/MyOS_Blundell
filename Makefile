@@ -34,7 +34,7 @@ kernel.bin:	Kernel/kernel_entry.o ${OBJ}
 
 # Assemble the kernel_entry
 %.o:	%.asm
-	nasm $< -f elf -o $@
+	nasm $< -f elf64 -o $@
 
 %.bin:	%.asm
 	nasm $< -f bin -I 'Boot/' -o $@

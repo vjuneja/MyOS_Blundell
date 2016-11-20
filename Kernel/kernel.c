@@ -23,7 +23,7 @@ void main()
 	timer_install();
 	keyboard_install();
 
-	__asm__ __volatile__ ("sti");
+//	__asm__ __volatile__ ("sti");
 
 	print("Hello World\n");
 
@@ -87,3 +87,4 @@ void main()
 		addr++;
 	}while(addr < 0x5000100); */
 }
+

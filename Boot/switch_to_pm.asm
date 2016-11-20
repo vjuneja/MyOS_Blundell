@@ -6,13 +6,11 @@ switch_to_pm:
 		; otherwise interrupts will run riot.
 
 	lgdt [gdt_descriptor]
-
 	mov eax, cr0	; see we are using 32 register (eax) here in 16 bit, we can do that
-	or eax, 0x1
+	or eax,0x1
 	mov cr0, eax
-
 	jmp CODE_SEG:init_pm
-
+	;jmp CODE_SEG:BEGIN_PM
 [bits 32]
 init_pm:
 	mov ax, DATA_SEG	 ; Now in PM , our old segments are meaningless ,
@@ -24,5 +22,11 @@ init_pm:
 
 	mov ebp, 0x90000
 	mov esp, ebp
-
 	call BEGIN_PM
+
+MSG_CLI1:
+	dw " cli 1 " , 0
+MSG_CLI2: 
+	dw " cli 2 " , 0
+MSG_CLI3:
+	dw " cli 3 " , 0
